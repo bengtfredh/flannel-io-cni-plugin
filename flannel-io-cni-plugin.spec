@@ -177,9 +177,9 @@ done
 
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
-install -p -m 0755 bin/* %{buildroot}/%{_libexecdir}/cni
+#install -p -m 0755 bin/* %{buildroot}/%{_libexecdir}/cni
 
-install -dp %{buildroot}%{_unitdir}
+#install -dp %{buildroot}%{_unitdir}
 #install -p plugins/ipam/dhcp/systemd/cni-dhcp.service %{buildroot}%{_unitdir}
 #install -p plugins/ipam/dhcp/systemd/cni-dhcp.socket %{buildroot}%{_unitdir}
 
