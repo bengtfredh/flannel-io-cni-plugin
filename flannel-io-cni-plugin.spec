@@ -270,7 +270,7 @@ export GOPATH=%{buildroot}/%{gopath}:$(pwd)/vendor:%{gopath}
 %{!?_licensedir:%global license %doc}
 
 %files
-%license LICENSE
+#%license LICENSE
 %doc *.md
 %dir %{_libexecdir}/cni
 %{_libexecdir}/cni/*
@@ -279,14 +279,14 @@ export GOPATH=%{buildroot}/%{gopath}:$(pwd)/vendor:%{gopath}
 
 %if 0%{?with_devel}
 %files devel -f devel.file-list
-%license LICENSE
+#%license LICENSE
 %doc *.md
 %dir %{gopath}/src/%{provider}.%{provider_tld}/%{project}
 %endif
 
 %if 0%{?with_unit_test} && 0%{?with_devel}
 %files unit-test-devel -f unit-test-devel.file-list
-%license LICENSE
+#%license LICENSE
 %doc *.md
 %endif
 
