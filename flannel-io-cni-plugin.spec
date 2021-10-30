@@ -39,7 +39,7 @@ Summary: Libraries for writing CNI plugin
 License: ASL 2.0
 URL: %{git0}
 #Source0: %{git0}/archive/%{built_tag}.tar.gz
-Source: https://github.com/flannel-io/cni-plugin/archive/v1.0.0.tar.gz
+Source0: v1.0.0.tar.gz
 # If go_compiler is not set to 1, there is no virtual provide. Use golang instead.
 BuildRequires: golang >= 1.16.6
 BuildRequires: go-rpm-macros
@@ -152,9 +152,6 @@ providing packages with %{import_path} prefix.
 #%autosetup -Sgit -n %{repo}-%{built_tag_strip}
 %autosetup -n %{repo}-%{built_tag_strip}
 rm -rf plugins/main/windows
-
-# Use correct paths in cni-dhcp unitfiles
-sed -i 's/\/opt\/cni\/bin/\%{_prefix}\/libexec\/cni/' plugins/ipam/dhcp/systemd/cni-dhcp.service
 
 %build
 export ORG_PATH="%{provider}.%{provider_tld}/%{project}"
