@@ -271,6 +271,7 @@ export GOPATH=%{buildroot}/%{gopath}:$(pwd)/vendor:%{gopath}
 
 %files
 #%license LICENSE
+ls -l
 %doc *.md
 %dir %{_libexecdir}/cni
 %{_libexecdir}/cni/*
