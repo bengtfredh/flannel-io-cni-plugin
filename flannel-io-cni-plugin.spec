@@ -21,13 +21,14 @@ Plugin designed to work in conjunction with flannel
 %prep
 mkdir %{name}
 cd %{name}
-%build
+
 %ifarch x86_64
 curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
 %endif
 %ifarch aarch64
 curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
+
 %setup -c -T
 
 %build
