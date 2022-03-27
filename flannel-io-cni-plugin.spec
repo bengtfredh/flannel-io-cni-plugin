@@ -29,16 +29,13 @@ curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{ve
 curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
 
-echo $arch
-
 %build
 
 %install
-install -d %{buildroot}%{_libexecdir}/cni/bin/
+mkdir %{buildroot}%{_libexecdir}/cni/bin -p
 install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel -t %{buildroot}%{_libexecdir}/cni/bin/
 
 %files
-%dir %{_libexecdir}/cni/bin
 %{_libexecdir}/cni/bin/
 
 %post
