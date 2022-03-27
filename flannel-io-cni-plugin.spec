@@ -19,21 +19,19 @@ Requires: containernetworking-cni
 Plugin designed to work in conjunction with flannel
 
 %prep
-mkdir %{name}
-cd %{name}
+%setup -c -T
+
+%build
 %ifarch x86_64
 curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
 %endif
 %ifarch aarch64
 curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
-%setup -c -T
-
-%build
 
 %install
 install -d %{buildroot}/usr/libexec/cni
-install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel %{buildroot}/usr/libexec/cni
+install -Dm644 ${RPM_BUILD_DIR}/flannel %{buildroot}/usr/libexec/cni
 
 %files
 /usr/libexec/cni/
