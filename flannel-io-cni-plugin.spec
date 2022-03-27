@@ -29,8 +29,6 @@ curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{ve
 curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
 
-%setup -c -T
-
 %build
 
 %install
