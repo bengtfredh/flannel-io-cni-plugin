@@ -11,7 +11,7 @@ Version: %{version}
 Release: %{release}
 License: APL
 URL: https://github.com/flannel-io/cni-plugin
-BuildRequires: golang
+BuildRequires: golang git-core make
 Requires: containernetworking-cni
 
 %global debug_package %{nil}
