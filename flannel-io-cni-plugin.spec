@@ -38,11 +38,11 @@ curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{v
 #make -d
 
 %install
-install -d -p %{buildroot}%{_libexecdir}/cni/
-install -Dm644 ${RPM_SOURCE_DIR}/flannel %{buildroot}%{_libexecdir}/cni/
+install -d -p %{buildroot}/usr/libexec/cni
+install -Dm644 ${RPM_SOURCE_DIR}/flannel %{buildroot}/usr/libexec/cni
 
 %files
-%{_libexecdir}/cni/
+/usr/libexec/cni/
 
 %post
 
