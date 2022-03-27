@@ -2,16 +2,16 @@ Packager: Bengt Fredh <bengt@fredhs.net>
 
 %define name flannel-io-cni-plugin
 %define version 1.0.1
-%define build 1
-%define release %{build}%{?dist}
+%define releasebuild 1
+%define release %{releasebuild}%{?dist}
 
 Summary: Plugin designed to work in conjunction with flannel
 Name: %{name}
 Version: %{version}
 Release: %{release}
 License: APL 2.0
-URL: https://github.com/flannel-io/cni-plugin
-Requires: containernetworking-cni
+URL: https://github.com/flannel-io
+#Requires: containernetworking-cni
 
 %global debug_package %{nil}
 
