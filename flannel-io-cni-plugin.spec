@@ -9,7 +9,7 @@ Summary: Plugin designed to work in conjunction with flannel
 Name: %{name}
 Version: %{version}
 Release: %{release}
-License: APL
+License: APL 2.0
 URL: https://github.com/flannel-io/cni-plugin
 Requires: containernetworking-cni
 
@@ -19,8 +19,8 @@ Requires: containernetworking-cni
 Plugin designed to work in conjunction with flannel
 
 %prep
-%setup -c -T
-
+mkdir %{name}
+cd %{name}
 %build
 %ifarch x86_64
 curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
@@ -28,10 +28,13 @@ curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{ve
 %ifarch aarch64
 curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
+%setup -c -T
+
+%build
 
 %install
-install -d %{buildroot}/usr/libexec/cni
-install -Dm644 ${RPM_BUILD_DIR}/flannel %{buildroot}/usr/libexec/cni
+mkdir %{buildroot}/usr/libexec/cni -p
+install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel %{buildroot}/usr/libexec/cni
 
 %files
 /usr/libexec/cni/
