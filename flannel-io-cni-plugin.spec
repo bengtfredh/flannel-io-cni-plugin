@@ -10,7 +10,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 License: APL 2.0
-URL: https://github.com/flannel-io/cni-plugin
+Source: https://github.com/flannel-io/cni-plugin
 Requires: containernetworking-cni
 
 %global debug_package %{nil}
