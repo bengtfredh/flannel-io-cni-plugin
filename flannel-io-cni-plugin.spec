@@ -32,11 +32,12 @@ curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{ve
 %build
 
 %install
-mkdir %{buildroot}/%{_libexecdir}/cni/bin -p
-install -m 644 ${builddir}/%{name}/flannel -t %{buildroot}/%{_libexecdir}/cni/bin/
+install -d -p %{buildroot}%{_libexecdir}/cni/bin/ -p
+install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel -t %{buildroot}%{_libexecdir}/cni/bin/
 
 %files
-/usr/libexec/cni/
+%dir %{_libexecdir}/cni/bin
+%{_libexecdir}/cni/bin/*
 
 %post
 
