@@ -27,7 +27,7 @@ git checkout v%{version}
 %build
 cd %{srcdir}
 go mod vendor
-make
+make -d
 
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
