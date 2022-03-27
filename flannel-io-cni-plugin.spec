@@ -26,7 +26,7 @@ cd %{name}
 curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
 %endif
 %ifarch aarch64
-curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
+curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
 
 %build
