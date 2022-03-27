@@ -11,7 +11,7 @@ Version: %{version}
 Release: %{release}
 License: APL
 URL: https://github.com/flannel-io/cni-plugin
-BuildRequires: golang git-core make
+#BuildRequires: golang git-core make
 Requires: containernetworking-cni
 
 %global debug_package %{nil}
@@ -20,18 +20,27 @@ Requires: containernetworking-cni
 Plugin designed to work in conjunction with flannel
 
 %prep
-git clone https://github.com/flannel-io/cni-plugin.git %{srcdir}
+#git clone https://github.com/flannel-io/cni-plugin.git %{srcdir}
+mkdir %{srcdir}
 cd %{srcdir}
-git checkout v%{version}
+#git checkout v%{version}
+
+%ifarch x86_64
+wget https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
+%endif
+%ifarch aarch64
+wget https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
+%endif
+mv flannel-* flannel
 
 %build
-cd %{srcdir}
-go mod vendor
-make -d
+#cd %{srcdir}
+#go mod vendor
+#make -d
 
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
-install -Dm644 %{srcdir}/bin/flannel %{buildroot}%{_libexecdir}/cni/
+install -Dm644 %{srcdir}/flannel %{buildroot}%{_libexecdir}/cni/
 
 %files
 %{_libexecdir}/cni/
