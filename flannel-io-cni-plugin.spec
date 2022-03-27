@@ -3,7 +3,7 @@ Packager: Bengt Fredh <bengt@fredhs.net>
 %define version 1.0.1
 %define build 1
 %define release %{build}%{?dist}
-%define srcdir ${RPM_SOURCE_DIR}/cni-plugin
+#%define srcdir ${RPM_SOURCE_DIR}/cni-plugin
 
 Summary: Plugin designed to work in conjunction with flannel
 Name: flannel-io-cni-plugin
@@ -21,17 +21,16 @@ Plugin designed to work in conjunction with flannel
 
 %prep
 #git clone https://github.com/flannel-io/cni-plugin.git %{srcdir}
-mkdir %{srcdir}
-cd %{srcdir}
+#mkdir %{srcdir}
+#cd %{srcdir}
 #git checkout v%{version}
 
 %ifarch x86_64
-wget https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
+curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
 %endif
 %ifarch aarch64
-wget https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
+curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
-mv flannel-* flannel
 
 %build
 #cd %{srcdir}
@@ -40,7 +39,7 @@ mv flannel-* flannel
 
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
-install -Dm644 %{srcdir}/flannel %{buildroot}%{_libexecdir}/cni/
+install -Dm644 ${RPM_SOURCE_DIR}/flannel %{buildroot}%{_libexecdir}/cni/
 
 %files
 %{_libexecdir}/cni/
