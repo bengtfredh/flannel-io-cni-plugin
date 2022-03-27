@@ -29,19 +29,11 @@ curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{ve
 curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
 
-pwd
-echo ${RPM_SOURCE_DIR}
-ls -ltr ${RPM_SOURCE_DIR}
-echo ${RPM_BUILD_DIR}
-ls -ltr ${RPM_BUILD_DIR}
-echo %{buildroot}
-ls -ltr %{buildroot}
-
 %build
 
 %install
-mkdir %{buildroot}/usr/libexec/cni -p
-install -Dm644 ${RPM_SOURCE_DIR}/%{name}/flannel -t %{buildroot}/usr/libexec/cni/
+mkdir %{buildroot}/%{_libexecdir}/cni/bin -p
+install -m 644 ${builddir}/%{name}/flannel -t %{buildroot}/%{_libexecdir}/cni/bin/
 
 %files
 /usr/libexec/cni/
