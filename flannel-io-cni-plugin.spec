@@ -1,11 +1,12 @@
 Packager: Bengt Fredh <bengt@fredhs.net> 
 
+%define name flannel-io-cni-plugin
 %define version 1.0.1
 %define build 1
 %define release %{build}%{?dist}
 
 Summary: Plugin designed to work in conjunction with flannel
-Name: flannel-io-cni-plugin
+Name: %{name}
 Version: %{version}
 Release: %{release}
 License: APL
@@ -18,18 +19,21 @@ Requires: containernetworking-cni
 Plugin designed to work in conjunction with flannel
 
 %prep
+mkdir %{name}
+cd %{name}
 %ifarch x86_64
 curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
 %endif
 %ifarch aarch64
 curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
 %endif
+%setup -c -T
 
 %build
 
 %install
 install -d %{buildroot}/usr/libexec/cni
-install -Dm644 ${RPM_SOURCE_DIR}/flannel %{buildroot}/usr/libexec/cni
+install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel %{buildroot}/usr/libexec/cni
 
 %files
 /usr/libexec/cni/
