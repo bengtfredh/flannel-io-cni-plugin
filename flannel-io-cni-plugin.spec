@@ -22,12 +22,12 @@ Plugin designed to work in conjunction with flannel
 mkdir %{name}
 cd %{name}
 
-%ifarch x86_64
+#%ifarch x86_64
 curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-amd64
-%endif
-%ifarch aarch64
-curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
-%endif
+#%endif
+#%ifarch aarch64
+#curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/flannel-arm64
+#%endif
 
 %build
 
@@ -37,7 +37,7 @@ install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel -t %{buildroot}%{_libexecdir}/cn
 
 %files
 %dir %{_libexecdir}/cni/bin
-%{_libexecdir}/cni/bin/*
+%{_libexecdir}/cni/bin/
 
 %post
 
