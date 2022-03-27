@@ -33,7 +33,7 @@ curl -o flannel  https://github.com/flannel-io/cni-plugin/releases/download/v%{v
 
 %install
 mkdir %{buildroot}/usr/libexec/cni -p
-install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel %{buildroot}/usr/libexec/cni/
+install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel -t %{buildroot}/usr/libexec/cni/
 
 %files
 /usr/libexec/cni/
