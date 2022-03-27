@@ -11,7 +11,7 @@ Version: %{version}
 Release: %{release}
 License: APL 2.0
 URL: https://github.com/flannel-io
-Requires: containernetworking-cni
+Requires: containernetworking-plugins
 
 %global debug_package %{nil}
 
@@ -35,7 +35,7 @@ mkdir %{buildroot}%{_libexecdir}/cni -p
 install -Dm644 ${RPM_BUILD_DIR}/%{name}/flannel -t %{buildroot}%{_libexecdir}/cni/
 
 %files
-%{_libexecdir}/cni/bin/
+%{_libexecdir}/cni/
 
 %post
 
