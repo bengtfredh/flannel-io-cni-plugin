@@ -11,7 +11,7 @@ Version: %{version}
 Release: %{release}
 License: APL 2.0
 URL: https://github.com/flannel-io
-#Requires: containernetworking-cni
+Requires: containernetworking-cni
 
 %global debug_package %{nil}
 
