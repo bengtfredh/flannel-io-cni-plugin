@@ -31,16 +31,17 @@ curl -o flannel https://github.com/flannel-io/cni-plugin/releases/download/v%{ve
 %build
 
 %install
-mkdir %{buildroot}%{_libexecdir}/cni -p
-install -Dm755 ${RPM_BUILD_DIR}/%{name}/flannel -t %{buildroot}%{_libexecdir}/cni/
+install -d -p %{buildroot}%{_libexecdir}/cni/
+install -p -m 0755 ${RPM_BUILD_DIR}/%{name}/flannel %{buildroot}%{_libexecdir}/cni
 
 %files
-%{_libexecdir}/cni/
+%dir %{_libexecdir}/cni
+%{_libexecdir}/cni/*
 
 %post
 
 %preun
 
 %changelog
-* Sun Mar 27 2022 <bengt@fredhs.net> - 1.0.1-1
-- First version
+%autochangelog
+
