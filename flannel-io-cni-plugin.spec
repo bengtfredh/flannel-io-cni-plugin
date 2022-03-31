@@ -69,12 +69,16 @@ mkdir -p $(pwd)/bin
 echo "Building plugin"
 go mod vendor
 make
-
-find / -iname "flannel*"
+%ifarch x86_64
+mv %{_builddir}/dist/flannel-amd64 bin/flannel
+%endif
+%ifarch aarch64
+mv %{_builddir}/dist/flannel-arm64 bin/flannel
+%endif
 
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
-install -p -m 0755 bin/* %{buildroot}/%{_libexecdir}/cni
+install -p -m 0755 bin/* %{buildroot}%{_libexecdir}/cni
 
 #define license tag if not already defined
 %{!?_licensedir:%global license %doc}
