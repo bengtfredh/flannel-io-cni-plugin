@@ -66,15 +66,9 @@ fi
 export GOPATH=$(pwd)/gopath
 mkdir -p $(pwd)/bin
 
-echo "Building plugins"
-export PLUGINS="plugins/meta/* plugins/main/* plugins/ipam/* plugins/sample"
-for d in $PLUGINS; do
-        if [ -d "$d" ]; then
-                plugin="$(basename "$d")"
-                echo "  $plugin"
-                %gobuild -o "${PWD}/bin/$plugin" "$@" "$REPO_PATH"/$d
-        fi
-done
+echo "Building plugin"
+go mod vendor
+make
 
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
