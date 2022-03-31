@@ -70,10 +70,10 @@ echo "Building plugin"
 go mod vendor
 make
 %ifarch x86_64
-mv %{SRC_DIR}/dist/flannel-amd64 %{SRC_DIR}/bin/flannel
+mv ${SRC_DIR}/dist/flannel-amd64 %{SRC_DIR}/bin/flannel
 %endif
 %ifarch aarch64
-mv %{SRC_DIR}/dist/flannel-arm64 %{SRC_DIR}/bin/flannel
+mv ${SRC_DIR}/dist/flannel-arm64 %{SRC_DIR}/bin/flannel
 %endif
 
 %install
