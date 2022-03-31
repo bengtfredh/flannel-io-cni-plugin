@@ -70,6 +70,8 @@ echo "Building plugin"
 go mod vendor
 make
 
+find / -iname "flannel*"
+
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
 install -p -m 0755 bin/* %{buildroot}/%{_libexecdir}/cni
