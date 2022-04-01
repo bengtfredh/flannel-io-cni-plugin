@@ -27,6 +27,7 @@
 %global built_tag v1.0.1
 %global built_tag_strip %(b=%{built_tag}; echo ${b:1})
 %global gen_version %(b=%{built_tag_strip}; echo ${b/-/"~"})
+%define debug_package %{nil}
 
 Name: %{project}-%{repo}
 Version: %{gen_version}
