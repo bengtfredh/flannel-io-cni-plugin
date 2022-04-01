@@ -72,11 +72,13 @@ make
 
 find /builddir -iname "flannel-*"
 
+pwd
+
 %ifarch x86_64
-mv ${SRC_DIR}/dist/flannel-amd64 %{SRC_DIR}/bin/flannel
+mv dist/flannel-amd64 bin/flannel
 %endif
 %ifarch aarch64
-mv ${SRC_DIR}/dist/flannel-arm64 %{SRC_DIR}/bin/flannel
+mv dist/flannel-arm64 bin/flannel
 %endif
 
 %install
