@@ -49,6 +49,32 @@ Provides: kubernetes-cni
 Provides: flannel-cni
 Requires: containernetworking-plugins
 
+Provides: bundled(golang(github.com/Microsoft/go_winio)) = v0.4.17
+Provides: bundled(golang(github.com/Microsoft/hcsshim)) = v0.8.20
+Provides: bundled(golang(github.com/alexflint/go_filemutex)) = v1.1.0
+Provides: bundled(golang(github.com/buger/jsonparser)) = v1.1.1
+Provides: bundled(golang(github.com/containerd/cgroups)) = v1.0.1
+Provides: bundled(golang(github.com/containernetworking/cni)) = v1.0.1
+Provides: bundled(golang(github.com/coreos/go_iptables)) = v0.6.0
+Provides: bundled(golang(github.com/coreos/go_systemd/v22)) = v22.3.2
+Provides: bundled(golang(github.com/d2g/dhcp4)) = v0.0.0_20170904100407_a1d1b6c41b1c
+Provides: bundled(golang(github.com/d2g/dhcp4client)) = v1.0.0
+Provides: bundled(golang(github.com/d2g/dhcp4server)) = v0.0.0_20181031114812_7d4a0a7f59a5
+Provides: bundled(golang(github.com/fsnotify/fsnotify)) = v1.4.9
+Provides: bundled(golang(github.com/godbus/dbus/v5)) = v5.0.4
+Provides: bundled(golang(github.com/gogo/protobuf)) = v1.3.2
+Provides: bundled(golang(github.com/golang/groupcache)) = v0.0.0_20200121045136_8c9f03a8e57e
+Provides: bundled(golang(github.com/mattn/go_shellwords)) = v1.0.12
+Provides: bundled(golang(github.com/networkplumbing/go_nft)) = v0.2.0
+Provides: bundled(golang(github.com/nxadm/tail)) = v1.4.8
+Provides: bundled(golang(github.com/onsi/ginkgo)) = v1.16.4
+Provides: bundled(golang(github.com/onsi/gomega)) = v1.15.0
+Provides: bundled(golang(github.com/pkg/errors)) = v0.9.1
+Provides: bundled(golang(github.com/safchain/ethtool)) = v0.0.0_20210803160452_9aa261dae9b1
+Provides: bundled(golang(github.com/sirupsen/logrus)) = v1.8.1
+Provides: bundled(golang(github.com/vishvananda/netlink)) = v1.1.1_0.20210330154013_f5de75959ad5
+Provides: bundled(golang(github.com/vishvananda/netns)) = v0.0.0_20210104183010_2eb08e3e575f
+
 %description
 This plugin is designed to work in conjunction with flannel, a network fabric for containers. When flannel daemon is started, it outputs a /run/flannel/subnet.env
 
