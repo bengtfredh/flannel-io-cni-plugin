@@ -69,6 +69,9 @@ mkdir -p $(pwd)/bin
 echo "Building plugin"
 go mod vendor
 make
+
+find /builddir -iname "flannel-*"
+
 %ifarch x86_64
 mv ${SRC_DIR}/dist/flannel-amd64 %{SRC_DIR}/bin/flannel
 %endif
