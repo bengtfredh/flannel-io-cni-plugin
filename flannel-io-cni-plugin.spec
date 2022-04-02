@@ -19,7 +19,8 @@ Release: %{release}
 License: APL 2.0
 URL: https://github.com/flannel-io
 Requires: containernetworking-plugins
-Source0: https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/cni-plugin-flannel-linux-%{archbuild}-v%{version}.tgz
+Source0: https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/cni-plugin-flannel-linux-amd64-v%{version}.tgz
+Source1: https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/cni-plugin-flannel-linux-arm64-v%{version}.tgz
 
 %global debug_package %{nil}
 
