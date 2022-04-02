@@ -28,13 +28,14 @@ Source1: https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/
 Plugin designed to work in conjunction with flannel
 
 %prep
-%setup -c
+%setup -c -T
+tar zxvf cni-plugin-flannel-linux-%{archbuild}-v%{version}.tgz
 
 %build
 
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
-install -p -m 0755 ${RPM_BUILD_DIR}/%{name}-%{version}/flannel-%{archbuild} %{buildroot}%{_libexecdir}/cni/flannel
+install -p -m 0755 flannel-%{archbuild} %{buildroot}%{_libexecdir}/cni/flannel
 
 %files
 %dir %{_libexecdir}/cni
