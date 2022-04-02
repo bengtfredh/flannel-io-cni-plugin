@@ -29,7 +29,7 @@ Plugin designed to work in conjunction with flannel
 
 %prep
 %setup -c -T
-tar zxvf cni-plugin-flannel-linux-%{archbuild}-v%{version}.tgz
+tar zxvf $RPM_SOURCE_DIR/cni-plugin-flannel-linux-%{archbuild}-v%{version}.tgz
 
 %build
 
