@@ -29,13 +29,11 @@ Plugin designed to work in conjunction with flannel
 %prep
 %setup -c
 
-find /builddir -iname "flannel-*"
-
 %build
 
 %install
 install -d -p %{buildroot}%{_libexecdir}/cni/
-install -p -m 0755 ${RPM_BUILD_DIR}/%{name}-%{version}/v-%{version}/flannel-%{archbuild} %{buildroot}%{_libexecdir}/cni/flannel
+install -p -m 0755 ${RPM_BUILD_DIR}/%{name}-%{version}/flannel-%{archbuild} %{buildroot}%{_libexecdir}/cni/flannel
 
 %files
 %dir %{_libexecdir}/cni
