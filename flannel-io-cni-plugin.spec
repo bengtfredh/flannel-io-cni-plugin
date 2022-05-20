@@ -1,7 +1,7 @@
 Packager: Bengt Fredh <bengt@fredhs.net> 
 
 %define name flannel-io-cni-plugin
-%define version 1.0.1
+%define version 1.1.0
 %define releasebuild 1
 %define release %{releasebuild}%{?dist}
 
