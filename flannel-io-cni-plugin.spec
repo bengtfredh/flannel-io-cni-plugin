@@ -31,7 +31,7 @@ Plugin designed to work in conjunction with flannel
 %prep
 pwd
 tree
-%autosetup -v -n %{sourcename}-%{version}
+%autosetup -Sgit -v -n %{sourcename}-%{version}
 pwd
 tree
 
@@ -47,7 +47,6 @@ fi
 export GOPATH=$(pwd)/gopath
 mkdir -p $(pwd)/bin
 
-go mod vendor
 make build_linux
 
 pwd
