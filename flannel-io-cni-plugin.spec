@@ -28,7 +28,11 @@ BuildRequires: git-core golang go-rpm-macros tree
 Plugin designed to work in conjunction with flannel
 
 %prep
-%autosetup -Sgit # -n %{name}-%{version}
+pwd
+tree
+%autosetup -v -n %{name}-%{version}
+pwd
+tree
 
 %build
 export ORG_PATH="github.com/flannel-io"
