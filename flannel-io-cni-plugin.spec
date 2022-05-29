@@ -1,6 +1,7 @@
 Packager: Bengt Fredh <bengt@fredhs.net> 
 
 %define name flannel-io-cni-plugin
+%define sourcename cni-plugin
 %define version 1.1.0
 %define releasebuild 1
 %define release %{releasebuild}%{?dist}
@@ -30,7 +31,7 @@ Plugin designed to work in conjunction with flannel
 %prep
 pwd
 tree
-%autosetup -v -n %{name}-%{version}
+%autosetup -v -n %{sourcename}-%{version}
 pwd
 tree
 
@@ -49,9 +50,11 @@ mkdir -p $(pwd)/bin
 go mod vendor
 make build_linux
 
+pwd
 tree
 
 %install
+pwd
 tree
 install -d -p %{buildroot}%{_libexecdir}/cni/
 install -p -m 0755 flannel-%{archbuild} %{buildroot}%{_libexecdir}/cni/flannel
