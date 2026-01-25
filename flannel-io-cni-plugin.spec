@@ -2,9 +2,10 @@ Packager: Bengt Fredh <bengt@fredhs.net>
 
 %define name flannel-io-cni-plugin
 # renovate: datasource=github-releases depName=flannel-io/cni-plugin
-%define version 1.9.0-flannel1
+%define upstream_version 1.9.0-flannel1
+%define version %(echo %{upstream_version} | cut -d- -f1)
 %define releasebuild 1
-%define release %{releasebuild}%{?dist}
+%define release %(echo %{upstream_version} | cut -d- -f2).%{releasebuild}%{?dist}
 
 %ifarch x86_64
 %define archbuild amd64
@@ -21,8 +22,8 @@ License: Apache-2.0
 URL: https://github.com/flannel-io/cni-plugin
 ExclusiveArch: x86_64 aarch64
 Requires: containernetworking-plugins
-Source0: https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/cni-plugin-flannel-linux-amd64-v%{version}.tgz
-Source1: https://github.com/flannel-io/cni-plugin/releases/download/v%{version}/cni-plugin-flannel-linux-arm64-v%{version}.tgz
+Source0: https://github.com/flannel-io/cni-plugin/releases/download/v%{upstream_version}/cni-plugin-flannel-linux-amd64-v%{upstream_version}.tgz
+Source1: https://github.com/flannel-io/cni-plugin/releases/download/v%{upstream_version}/cni-plugin-flannel-linux-arm64-v%{upstream_version}.tgz
 
 %global debug_package %{nil}
 
@@ -31,7 +32,7 @@ Plugin designed to work in conjunction with flannel
 
 %prep
 %setup -c -T
-tar zxvf $RPM_SOURCE_DIR/cni-plugin-flannel-linux-%{archbuild}-v%{version}.tgz
+tar zxvf $RPM_SOURCE_DIR/cni-plugin-flannel-linux-%{archbuild}-v%{upstream_version}.tgz
 
 %build
 

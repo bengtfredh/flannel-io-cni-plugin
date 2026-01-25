@@ -2,19 +2,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "platformAutomerge": true,
-  "allowedPostUpgradeCommands": [
-    "^sed -i 's/releasebuild \\[0-9\\]\\*/releasebuild 1/' flannel-io-cni-plugin\\.spec$"
-  ],
   "customManagers": [
     {
       "customType": "regex",
       "managerFilePatterns": ["/flannel-io-cni-plugin\\.spec$/"],
       "matchStrings": [
-        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)[\\s\\S]*?%define version (?<currentValue>\\S+)"
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)[\\s\\S]*?%define upstream_version (?<currentValue>\\S+)"
       ],
       "extractVersionTemplate": "^v(?<version>.+)$",
       "versioningTemplate": "loose"
     }
+  ],
+  "allowedPostUpgradeCommands": [
+    "^sed -i 's/releasebuild [0-9]*/releasebuild 1/' flannel-io-cni-plugin\\.spec$"
   ],
   "packageRules": [
     {
