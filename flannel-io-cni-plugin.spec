@@ -3,7 +3,7 @@ Packager: Bengt Fredh <bengt@fredhs.net>
 %define name flannel-io-cni-plugin
 # renovate: datasource=github-releases depName=flannel-io/cni-plugin
 %define version 1.9.0-flannel1
-%define releasebuild 2
+%define releasebuild 1
 %define release %{releasebuild}%{?dist}
 
 %ifarch x86_64
