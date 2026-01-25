@@ -9,7 +9,8 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)[\\s\\S]*?%define version (?<currentValue>\\S+)"
       ],
-      "extractVersionTemplate": "^v(?<version>.+)$"
+      "extractVersionTemplate": "^v(?<version>.+)$",
+      "versioningTemplate": "loose"
     }
   ],
   "packageRules": [
