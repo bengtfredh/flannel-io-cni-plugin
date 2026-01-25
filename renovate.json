@@ -1,11 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "platformAutomerge": true,
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["flannel-io-cni-plugin\\.spec$"],
+      "managerFilePatterns": [
+        "/flannel-io-cni-plugin\\.spec$/"
+      ],
       "matchStrings": [
         "# renovate: datasource=github-releases depName=flannel-io/cni-plugin\\n%define version (?<currentValue>\\S+)"
       ],
@@ -16,7 +20,9 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": ["flannel-io/cni-plugin"],
+      "matchPackageNames": [
+        "flannel-io/cni-plugin"
+      ],
       "postUpgradeTasks": {
         "commands": [
           "sed -i 's/releasebuild [0-9]*/releasebuild 1/' flannel-io-cni-plugin.spec"
